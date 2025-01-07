@@ -34,6 +34,7 @@ readFile(firstFileName, 'utf8', (err, result) => {
 
 let first, second, readOutPut;
 
+console.log('\n\nStarting .....')
 readFile(firstFileName, 'utf8', (err, result) => {
     displayResult(err, result, first)   
 });
@@ -43,7 +44,7 @@ readFile(secondFileName, 'utf8', (err, result) => {
 
 writeFile(writeFilename, `\nHello there, this is the result ${first}, ${second}.... flat`, {flag: 'a'},  (err, result) => {
     displayResult(err, result, readOutPut);
-    console.log({first, second, readOutPut})
+    console.log('Done with this task')
 });
 
 function displayResult(err, result, set){
@@ -53,5 +54,7 @@ function displayResult(err, result, set){
     };
     set = result;
 };
+
+console.log('\nend');
 
 

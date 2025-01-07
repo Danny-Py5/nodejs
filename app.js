@@ -1,11 +1,25 @@
-const amount = 12;
+const path = require('path'); 
 
-if (amount < 12){
-    console.log('This is a small number thsn 12');
-} else {
-    console.log('This a lager number than 12')
-};
+// to get the path seperator of your operating system use the path.sep
+const myPathSep = path.sep;
+console.log({myPathSep});
 
-console.log('Hello world!, This is my first node application');
+// join path;
+const pathToNewTXT = path.join('/content', 'subfolder', 'new.txt');
+console.log({pathToNewTXT});
 
+// base name
+const base = path.basename(pathToNewTXT)
+console.log({base})
+
+// the name of the directory to the file 
+const dirname = path.dirname(pathToNewTXT);
+console.log({dirname});
+
+
+const absolutePath1 = path.resolve(__dirname, 'content', 'subfolder', 'text.txt');
+const absolutePath2 = path.join(__dirname, 'content', 'subfolder', 'text.txt')
+console.log(absolutePath1);
+console.log(absolutePath2);
+console.log();
 

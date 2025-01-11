@@ -8,9 +8,9 @@ const logger = (req, res, next) => {
     console.log(req.method, req.url, new Date().getFullYear());
 
     next();
-};
+}
 
-app.use(logger);
+app.use('/api', logger); // this will be middleware for all rout starting with /api ###Will not work for any rout like /about, /item etc.... 
 
 
 app.get('/', (req, res) => {

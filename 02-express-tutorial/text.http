@@ -1,0 +1,18 @@
+GET http://localhost:4000
+
+### not found resource 
+GET http://localhost:4000/asdfad
+
+
+### product api
+GET http://localhost:4000/api/products
+
+### get specific product
+GET http://localhost:4000/api/products/4
+
+### search for product using url parameters 
+GET http://127.0.0.1:4000/api/v1/products/query?search=a&limit=2
+
+### search for products without url parameters
+GET http://127.0.0.1:4000/api/v1/products/query
+

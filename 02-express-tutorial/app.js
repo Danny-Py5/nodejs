@@ -11,9 +11,11 @@ app.use(express.static('./public'));
 
 
 // requests....
-app.get('/', (req, res) => {
-    res.status(200).sendFile(homePage);
-});
+// app.get('/', (req, res) => {
+//     res.status(200).sendFile(homePage);
+// });
+
+
 
 app.all('*', (req, res) => {
     res.status(404).send('<h1>Resource not found</h1>');

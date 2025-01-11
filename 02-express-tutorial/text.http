@@ -16,3 +16,20 @@ GET http://127.0.0.1:4000/api/v1/products/query?search=a&limit=2
 ### search for products without url parameters
 GET http://127.0.0.1:4000/api/v1/products/query
 
+
+
+# milddleware
+### home
+GET http://localhost:4000
+
+### about 
+GET http://localhost:4000/about
+
+### apis
+GET http://localhost:4000/api/products
+
+### 
+### about 
+GET http://localhost:4000/api/items
+
+

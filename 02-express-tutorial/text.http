@@ -33,3 +33,9 @@ GET http://localhost:4000/api/products
 GET http://localhost:4000/api/items
 
 
+
+
+### test authorize
+GET http://localhost:4000/about?user=444
+
+

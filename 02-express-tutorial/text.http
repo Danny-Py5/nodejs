@@ -46,17 +46,28 @@ Content-Type: application/json
     "name": "Daniel"
 }
 
-###
-PUT http://localhost:4000/api/people/99
+### 
+PUT http://localhost:4000/api/people/1
 Content-Type: application/json
 
 {
     "name": "Isreal"
 }
 ###
-DELETE http://localhost:4000/api/people/1
+DELETE http://localhost:4000/api/people/3
+
+###
+POST http://localhost:4000/login
+Content-Type: "application/json"
 
 
+### get people
+GET http://localhost:4000/api/people
 
+### login
+POST  http://localhost:4000/login
+Content-Type: "application/x-www-form-urlencoded"
 
-
+{
+    "name": "Daniel Fatokun"
+}

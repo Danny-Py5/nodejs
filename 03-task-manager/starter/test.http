@@ -1,0 +1,22 @@
+GET http://localhost:4000/hello
+
+
+
+
+### gett all tasks
+GET http://localhost:4000/api/v1/tasks
+
+### create Task
+POST http://localhost:4000/api/v1/tasks
+Content-Type: "application/json"
+
+{
+    "name": "Daniel",
+}
+
+### 
+GET http://localhost:4000/api/v1/tasks/1
+### 
+PATCH  http://localhost:4000/api/v1/tasks/1
+### 
+DELETE  http://localhost:4000/api/v1/tasks/1

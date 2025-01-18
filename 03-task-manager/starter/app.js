@@ -21,8 +21,9 @@ app.use('/api/v1/tasks', tasksRouter);
 const startServer = async () => {
     try {
         await connectDB(process.env.MONGO_URI);
+        const timeStart = new Date();
         app.listen(PORT, () => {
-            console.log(`Server listening to port: ${PORT}`)
+            console.log(`Server listening to port: ${PORT}\nTime used: ${timeStart.getMinutes()}`)
         });
     } catch (error) {
         console.log(error)

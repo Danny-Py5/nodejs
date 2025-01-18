@@ -8,15 +8,28 @@ GET http://localhost:4000/api/v1/tasks
 
 ### create Task
 POST http://localhost:4000/api/v1/tasks
-Content-Type: "application/json"
+Content-Type: application/json
 
 {
     "name": "Daniel"
 }
 
 ### 
-GET http://localhost:4000/api/v1/tasks/1
+GET http://localhost:4000/api/v1/tasks
+
+### Get unexist tast
+GET http://localhost:4000/api/v1/tasks/678c4700dca05c14e4a4b5d8
+
+### Get single exist tast
+GET http://localhost:4000/api/v1/tasks/678c455710621c14f8a6b76b
+
+
 ### 
-PATCH  http://localhost:4000/api/v1/tasks/1
+PATCH  http://localhost:4000/api/v1/tasks/678c455710621c14f8a6b76b
+Content-Type: application/json
+
+{
+    "name": ""
+}
 ### 
-DELETE  http://localhost:4000/api/v1/tasks/1
+DELETE  http://localhost:4000/api/v1/tasks/678c4700dca05c14e4a4b5d8

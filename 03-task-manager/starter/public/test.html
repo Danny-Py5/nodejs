@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit form </title>
+    <style>
+        form, input{
+            border-radius: .7rem;
+        }
+        form{
+            margin: 20% auto;
+            color: white;
+            font-family: system-ui;
+            font-size: 2rem;
+            padding: 1rem;
+            background-color: #333;
+            display: flex;
+            row-gap: 2rem;
+            flex-direction: column;
+            max-width: 500px;
+        }
+        input{
+            color: inherit;
+            font: inherit;
+            background-color: transparent;
+            border: 1px solid grey;
+            transition: background-color .5s;
+        }
+        input[id='name']{
+            padding-left: 1rem;
+        }
+        .submit:hover{
+            background-color: #555;
+        }
+        .submit:active{
+            background-color: #444;
+        }
+        body{
+            background-color: #111;
+        }
+    </style>
+</head>
+<body>
+    <form method="post">
+        <input type="text" name="name" id="name" placeholder="name" class="name" required>
+        
+        <input type="submit" class="submit">
+        <p class="nameList" style="font-size: .8rem;"></p>
+    </form>
+
+    <script>
+        const form = document.querySelector('form');
+        const nameList = document.querySelector('.nameList');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const name =  document.querySelector('.name').value;
+            const res = await fetch('/api/v1/tasks', 
+                {
+                    method: 'POST', 
+                    headers: {
+                        'Content-type': 'application/json', 
+                    },
+                    body: JSON.stringify({name: name})
+                }
+            );
+            const {newName} = await res.json();
+            const span = document.createElement('span');
+            span.textContent=`${newName+' '}`
+            nameList.appendChild(span);
+        });
+    </script>
+</body>
+</html>

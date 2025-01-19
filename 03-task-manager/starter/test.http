@@ -24,12 +24,12 @@ GET http://localhost:4000/api/v1/tasks/678c4700dca05c14e4a4b5d8
 GET http://localhost:4000/api/v1/tasks/678c455710621c14f8a6b76b
 
 
-### 
+### update fail validation
 PATCH  http://localhost:4000/api/v1/tasks/678c455710621c14f8a6b76b
 Content-Type: application/json
 
 {
     "name": ""
 }
-### 
-DELETE  http://localhost:4000/api/v1/tasks/678c4700dca05c14e4a4b5d8
+### delete unexist task
+DELETE  http://localhost:4000/api/v1/tasks/678c2f8674fa5d146430ea55

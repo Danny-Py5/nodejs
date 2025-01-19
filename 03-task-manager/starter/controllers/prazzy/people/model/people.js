@@ -1,5 +1,6 @@
 const {readFile, writeFile} = require('fs');
 const readFilePromisify = require('util').promisify(readFile);
+const path = require('path');
 
 const people = [
     {
@@ -16,7 +17,7 @@ const people = [
 
 
 const saveFile = (obj) => {
-    writeFile('people.txt', JSON.stringify(obj), 'utf-8', (error, result) => {
+    writeFile(path.resolve(__dirname, 'people.js'), JSON.stringify(obj), 'utf-8', (error, result) => {
         if (error) {
             console.log(error);
         };
@@ -34,7 +35,7 @@ function addPersonFs(person) {
 
 function getPeopleFs() {
     return new Promise((resolve, reject) => {
-        readFile('./people.txt', 'utf8', (error, result) => {
+        readFile(path.resolve(__dirname, 'people.txt'), 'utf8', (error, result) => {
             if (error){
                 reject(error)
             } else {

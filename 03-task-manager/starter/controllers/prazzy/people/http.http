@@ -2,7 +2,7 @@
 ### get all people 
 GET http://localhost:4500/api/v1/people
 
-### get all people 
+###
 POST http://localhost:4500/api/v1/people
 Content-Type: 'application/json'
 

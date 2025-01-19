@@ -6,20 +6,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Submit form </title>
     <style>
+
         form, input{
             border-radius: .7rem;
         }
         form{
             margin: 20% auto;
-            color: white;
+            color: #888;
             font-family: system-ui;
             font-size: 2rem;
             padding: 1rem;
-            background-color: #333;
+            background-color: #1c1c1c;
             display: flex;
             row-gap: 2rem;
             flex-direction: column;
             max-width: 500px;
+            animation: slidein 1s cubic-bezier(0.4, 0.2, 0.3, 1);
+        }
+        @keyframes slidein {
+            from{
+                transform: translateY(-100%);
+            }
+            to{
+                transform: translateY(0);
+            }
         }
         input{
             color: inherit;
@@ -38,7 +48,8 @@
             background-color: #444;
         }
         body{
-            background-color: #111;
+            background: linear-gradient(#111 var(--y, 50%), #262626);
+            height: 100vh;
         }
     </style>
 </head>
@@ -49,6 +60,15 @@
         <input type="submit" class="submit">
         <p class="nameList" style="font-size: .8rem;"></p>
     </form>
+
+    <script>
+        document.addEventListener('mousemove', (e) => {
+            const x = e.clientX;
+            const y = e.clientY;
+
+            document.body.style = `--x: ${x}%; --y: ${y + 90}px;`;
+        })
+    </script>
 
     <script>
         const form = document.querySelector('form');
@@ -66,10 +86,15 @@
                     body: JSON.stringify({name: pname, completed: false})
                 }
             );
-            const {name} = await res.json();
-            const span = document.createElement('span');
-            span.textContent=`${name + ' '}`
-            nameList.appendChild(span);
+            try {
+                const {name} = await res.json();
+                const span = document.createElement('span');
+                span.textContent=`${name + ' '}`
+                nameList.appendChild(span);
+                
+            } catch (error) {
+                console.log(error);
+            }
         });
     </script>
 </body>

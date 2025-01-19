@@ -18,8 +18,12 @@ const getAllTasks = (req, res) => {
 const createTask = async (req, res) => {
     // console.log(req.method);
     // console.log(req.body);
-    const createdTask = await tasksCollection.create(req.body);
-    res.status(201).json(createdTask);
+    try{
+        const createdTask = await tasksCollection.create(req.body);
+        res.status(201).json(createdTask);
+    } catch (error) {
+        res.status(500).json({msg: error});
+    };
 };
 
 /**

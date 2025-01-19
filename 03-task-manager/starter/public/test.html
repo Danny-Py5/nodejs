@@ -56,19 +56,19 @@
 
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
-            const name =  document.querySelector('.name').value;
+            const pname =  document.querySelector('.name').value;
             const res = await fetch('/api/v1/tasks', 
                 {
                     method: 'POST', 
                     headers: {
                         'Content-type': 'application/json', 
                     },
-                    body: JSON.stringify({name: name})
+                    body: JSON.stringify({name: pname, completed: false})
                 }
             );
-            const {newName} = await res.json();
+            const {name} = await res.json();
             const span = document.createElement('span');
-            span.textContent=`${newName+' '}`
+            span.textContent=`${name + ' '}`
             nameList.appendChild(span);
         });
     </script>

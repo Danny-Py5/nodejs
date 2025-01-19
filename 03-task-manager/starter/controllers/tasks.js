@@ -1,3 +1,5 @@
+const tasksCollection = require('../models/tasks.js')
+
 // const {getFromFile, saveTofile} = require('./prazzy/fileManagement.js')
 
 /**
@@ -13,10 +15,11 @@ const getAllTasks = (req, res) => {
  * @param {import('express').Request} req - The request object
  * @param {import('express').Response} res - The response object
  */
-const createTask = (req, res) => {
+const createTask = async (req, res) => {
     // console.log(req.method);
     // console.log(req.body);
-    res.status(200).json({'newName': req.body.name});
+    const createdTask = await tasksCollection.create(req.body);
+    res.status(201).json(createdTask);
 };
 
 /**

@@ -1,9 +1,13 @@
 const asyncWrapper = (fn) => {
     return async (req, res, next) => {
         try {
-            fn(req, res);
+            await fn(req, res, next);
         } catch (error) {
-            res.status(500).send('Erro occured')
+            // res.status(500).send(error);
+            next(error)
         }
     }
-}
+};
+
+module.exports = asyncWrapper;
+

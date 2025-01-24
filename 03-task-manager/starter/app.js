@@ -2,7 +2,9 @@ const connectDB = require('./db/connect.js');
 const express = require('express');
 const tasksRouter = require('./routes/tasks.js');
 require('dotenv').config();
-const notFound = require('./milddleware/notFound.js')
+const notFound = require('./milddleware/notFound.js');
+const errorHandlerMiddleware = require('./milddleware/error-handler.js');
+
 const app = express();
 const PORT = 4000;
 
@@ -20,7 +22,8 @@ app.use(express.static('./public'));
 
 app.use('/api/v1/tasks', tasksRouter);
 
-app.use(notFound)
+app.use(notFound);
+app.use(errorHandlerMiddleware); // if error occure in the controllers wrapper, express comes here as it is the error handler that takes 4 args (err, req, res, next). 
 
 // app.get('*', (req, res) => {
 //     // 

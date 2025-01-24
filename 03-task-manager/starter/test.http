@@ -33,3 +33,7 @@ Content-Type: application/json
 }
 ### delete unexist task
 DELETE  http://localhost:4000/api/v1/tasks/678c2f8674fa5d146430ea55
+
+
+###
+DELETE  http://localhost:4000/api/

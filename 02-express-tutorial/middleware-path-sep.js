@@ -7,7 +7,7 @@ const PORT = 4000;
 const logger = (req, res, next) => {
     console.log(req.method, req.url, new Date().getFullYear());
 
-    next();
+    next(); // calling next here will go to the next respected middleware 
 }
 
 app.use('/api', logger); // this will be middleware for all rout starting with /api ###Will not work for any rout like /about, /item etc.... 

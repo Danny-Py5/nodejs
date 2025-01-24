@@ -1,0 +1,28 @@
+you can pass multiple middleware using array
+
+const middleware1 = (req, res, next) => {
+    // code here
+    next();
+}
+const middleware2 = (req, res, next) => {
+    // code here
+    next();
+}
+
+app.use([middleware1, middleware2]);
+
+
+
+-----------------------------------------
+
+specify middleware to be applied to some routes or a route using:
+    app.use('/route that starts with:...', middlewareName)
+        like ->  app.use('/api', middlewareName);
+
+
+-----------------------------------------
+when you call next(erro) that is, you pass an arg to the next func(), 
+the express authomaticaly thinks that something went wrong and it 
+will automatically skip the execution of the request to the error 
+handuller function i.e app.use((err, req, res, next) => {...}) skipping
+the next middleware and the route handuller. 

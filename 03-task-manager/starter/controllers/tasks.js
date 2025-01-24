@@ -1,5 +1,8 @@
 const tasksCollection = require('../models/tasks.js');
-const asyncWrapper = require('../milddleware/asyncWrapper.js')
+const asyncWrapper = require('../milddleware/asyncWrapper.js');
+const  {
+    createCustomAPIError
+} = require('../error/customError.js')
 
 // const {getFromFile, saveTofile} = require('./prazzy/fileManagement.js')
 
@@ -29,12 +32,14 @@ const createTask = asyncWrapper( async (req, res) => {
  * @param {import('express').Request} req - The request object
  * @param {import('express').Response} res - The response object
  */
-const getTask = asyncWrapper( async (req, res) => {
+const getTask = asyncWrapper( async (req, res, next) => {
     const {id} = req.params;
     // const singleTask = await tasksCollection.findOne({_id: id});
     const task = await tasksCollection.findOne({_id: id});
     if (!task){
-        return res.status(404).json({msg: `Cannot find task with the id ${id}`});
+        const error = createCustomAPIError(`Cannot find task with the id ${id} ::[custom]::`, 404);
+        return next(error);
+        //return res.status(404).json({msg: `Cannot find task with the id ${id}`});
     };
     res.status(200).json({task});
 });
@@ -49,7 +54,8 @@ const updateTask = asyncWrapper( async (req, res) => {
     const task = await tasksCollection.findOneAndUpdate({_id: id}, req.body, {new: true, runValidators: true});
 
     if (!task){
-        return res.status(404).send({msg: `No task with the id of ${id}`});
+        const error = createCustomAPIError(`Cannot find task with the id ${id} ::[custom]::`, 404);
+        return next(error);
     }; 
     res.status(200).json({task});
 });
@@ -64,7 +70,8 @@ const deleteTask = asyncWrapper( async (req, res) => {
     // const deletedTask = await tasksCollection.findOneAndDelete({_id: id});
     const task = await tasksCollection.findOneAndDelete({_id: id});
     if (!task){
-        return res.status(404).send({msg: `No task with id : ${id}`});
+        const error = createCustomAPIError(`Cannot find task with the id ${id} ::[custom]::`, 404);
+        return next(error);
     }
     res.status(200).json({task});
 });

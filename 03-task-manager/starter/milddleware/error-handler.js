@@ -3,7 +3,8 @@
  * @param {import('express').Response} res - The response object
  */
 const errorHandlerMiddleware = (err, req, res, next) => {
-    return res.status(500).json({msg: err});
+    //console.log(err);
+    return res.status(err.statusCode).json({msg: err.message, status: err.statusCode, success: false});
 };
 
 
